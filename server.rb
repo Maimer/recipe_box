@@ -1,11 +1,12 @@
 require 'sinatra'
+require_relative 'helpers.rb'
 
 get '/' do
   redirect '/recipes'
 end
 
 get '/recipes' do
-  @title = Recipe Box
+  @title = "Recipe Box"
   @recipes = find_recipes()
 
   erb :'recipes/index'
