@@ -12,9 +12,10 @@ end
 def find_recipes(letter)
   letter == "A" ? nums = "OR recipes.name ~ '^[0-9]+' " : nums = ""
   db_connection do |conn|
-    query = "SELECT recipes.name, recipes.id
+    query = "SELECT recipes.name, recipes.id, recipes.description, recipes.instructions
              FROM recipes
-             WHERE recipes.name LIKE '#{letter}%' " + nums + "ORDER BY recipes.name"
+             WHERE recipes.description IS NOT NULL AND recipes.instructions IS NOT NULL
+             AND recipes.name LIKE '#{letter}%' " + nums + "ORDER BY recipes.name"
     conn.exec(query)
   end
 end
