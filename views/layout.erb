@@ -7,19 +7,21 @@
   </head>
   <body>
   <div class="wrapper">
-    <h1><%= @title %></h1>
+    <div class="recipe">
+      <h1><%= @title %></h1>
+      <div class="github">
+        <a class="pure-button" href="https://github.com/Maimer/recipe_box">View Github Repo!</a>
+      </div>
       <ul class="pure-paginator">
         <% for i in ("A".."Z") %>
           <li class="pure-button"><a href="/recipes?page=<%= i %>"><%= i %></a></li>
         <% end %>
       </ul>
-    </br>
+    </div>
 
       <%= yield %>
 
     </br>
-    <p>Created by: <a href="https://github.com/Maimer/">Nicholas Lee</a></p>
-    <p><a href="https://github.com/Maimer/recipe_box">Github Repo</a></p>
     </br>
     </br>
     </body>

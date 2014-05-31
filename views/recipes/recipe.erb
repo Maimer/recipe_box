@@ -1,16 +1,19 @@
-<p><h4>DESCRIPTION:</h4></p>
+<div class="recipe">
 
-<p><%= @details[0]["description"] %></p>
+  <p><h4>DESCRIPTION:</h4></p>
 
-<p><h4>INSTRUCTIONS:</h4></p>
+  <p><%= @details[0]["description"] %></p>
 
-<p><%= @details[0]["instructions"] %></p>
+  <p><h4>INSTRUCTIONS:</h4></p>
 
-<p><h4>INGREDIENTS:</h4></p>
+  <p><%= @details[0]["instructions"] %></p>
 
-<ul>
-  <% @details.each do |detail| %>
-    <li><%= detail["ingredient"] %></li>
-  <% end %>
-</ul>
+  <p><h4>INGREDIENTS:</h4></p>
 
+  <ul>
+    <% @details.each do |detail| %>
+      <li><%= detail["ingredient"] %></li>
+    <% end %>
+  </ul>
+
+</div>
