@@ -1,5 +1,16 @@
-<ul>
-  <% @recipes.each do |recipe| %>
-    <li><a href="/recipes/<%= recipe["id"] %>"><%= recipe["name"] %></a></li>
-  <% end %>
-</ul>
+<table class="pure-table-striped">
+    <thead>
+    </thead>
+    <tbody>
+      <% @recipes.each_with_index do |recipe, i| %>
+        <% if i == 0 %> <tr> <% end %>
+          <td><a href="/recipes/<%= recipe["id"] %>"><%= recipe["name"] %></a></td>
+        <% if (i+1) % 2 == 0 %> </tr><tr> <% end %>
+      <% end %>
+      </tr>
+    </tbody>
+</table>
+
+</br>
+</br>
+</br>

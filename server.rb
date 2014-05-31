@@ -7,15 +7,20 @@ end
 
 get '/recipes' do
   @title = "Recipe Box"
-  @recipes = find_recipes()
+  if params[:page] != nil
+    @page = params[:page].to_s
+  else
+    @page = "A"
+  end
+  @recipes = find_recipes(@page)
 
   erb :'recipes/index'
 end
 
 get '/recipes/:id' do
-  @details = recipe_details(@id)
   @id = params[:id]
-  @title =
+  @details = recipe_details(@id)
+  @title = @details[0]["name"]
 
   erb :'recipes/recipe'
 end

@@ -9,16 +9,23 @@ def db_connection
   end
 end
 
-def find_recipes
+def find_recipes(letter)
+  letter == "A" ? nums = "OR recipes.name ~ '^[0-9]+' " : nums = ""
   db_connection do |conn|
-    query = "SELECT recipes.name, recipes.id FROM recipes ORDER BY recipes.name"
+    query = "SELECT recipes.name, recipes.id
+             FROM recipes
+             WHERE recipes.name LIKE '#{letter}%' " + nums + "ORDER BY recipes.name"
     conn.exec(query)
   end
 end
 
 def recipe_details(id)
   db_connection do |conn|
-    query = "SELECT "
+    query = "SELECT recipes.name AS name, recipes.id, recipes.instructions, recipes.description,
+             ingredients.name AS ingredient
+             FROM recipes
+              JOIN ingredients ON recipes.id = ingredients.recipe_id
+             WHERE recipes.id = #{id}"
     conn.exec(query)
   end
 end

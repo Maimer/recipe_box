@@ -3,12 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title><%= @title %></title>
-    <link rel="stylesheet" href="/css.css">
-
+    <link rel="stylesheet" href="/pure-min.css">
   </head>
   <body>
+  <div class="wrapper">
+    <h1><%= @title %></h1>
+      <% for i in ("A".."Z") %>
+        <a href="/recipes?page=<%= i %>"><%= i %></a>
+        <% unless i == "Z" %> |
+        <% end %>
+      <% end %>
+    </br></br>
 
-  <%= yield %>
+      <%= yield %>
 
-  </body>
+    </body>
+  </div>
 </html>

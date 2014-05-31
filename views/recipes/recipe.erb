@@ -1,0 +1,9 @@
+<p><%= @details[0]["description"] %></p>
+
+<p><%= @details[0]["instructions"] %></p>
+
+<ul>
+  <% @details.each do |detail| %>
+    <li><%= detail["ingredient"] %></li>
+  <% end %>
+</ul>
